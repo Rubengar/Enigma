@@ -9,7 +9,6 @@ public class Enigma
 {
     // instance variables - replace the example below with your own
 
-
     /**
      * Constructor for objects of class Enigma
      */
@@ -26,10 +25,12 @@ public class Enigma
      */
     public int encripta(Mecanismo mecanismo,int numero)
     {
-        return mecanismo.encripta(numero);
+        return (numero > 10) ? mecanismo.encripta(numero) : -1;
     }
+
     public int desencripta(Mecanismo mecanismo,int numero)
     {
-        return mecanismo.desencripta(numero);
+        int resultado = mecanismo.desencripta(numero);
+        return (resultado > 10) ? resultado : -1;
     }
 }

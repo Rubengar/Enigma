@@ -27,26 +27,57 @@ public class MecanismoOffset extends Mecanismo
     @Override
     public int encripta(int numeroEncriptar)
     {
-        int numero = -1;
-        if (numeroEncriptar > 10)
-        {
-            numero = numeroEncriptar*getNumero();
+        String cadena = String.valueOf(numeroEncriptar);
+        String[] cadenaNumeros = cadena.split("");
+        int[] numeros = new int[cadenaNumeros.length];
+        int i = 0;
+        for(String str:cadenaNumeros){
+            numeros[i]=Integer.parseInt(str);//Exception in this line
+            i++;
         }
-        return numero;
+        for (int a = 1; a < numeros.length; a++)
+        {
+            numeros[a] += getNumero();
+            if (numeros[a] >= 10)
+            {
+                numeros[a] -= 10;
+            }
+        }
+        StringBuilder strNum = new StringBuilder();
+        for (int num : numeros) 
+        {
+            strNum.append(num);
+        }
+        int numeroFinal = Integer.parseInt(strNum.toString());
+        return numeroFinal;
     }
 
     @Override
     public int desencripta(int numeroDesencriptar)
     {
-        int numero = -1;
-        if (numeroDesencriptar > 10)
-        {
-            numero = numeroDesencriptar/getNumero();
+        String cadena = String.valueOf(numeroDesencriptar);
+        String[] cadenaNumeros = cadena.split("");
+        int[] numeros = new int[cadenaNumeros.length];
+        int i = 0;
+        for(String str:cadenaNumeros){
+            numeros[i]=Integer.parseInt(str);//Exception in this line
+            i++;
         }
-        if (numero < 10)
+        for (int a = 1; a < numeros.length; a++)
         {
-            numero = -1;
+            numeros[a] -= getNumero();
+            if (numeros[a]<0)
+            {
+                numeros[a]=  10 + numeros[a];
+            }
         }
-        return numero;
+        StringBuilder strNum = new StringBuilder();
+
+        for (int num : numeros) 
+        {
+            strNum.append(num);
+        }
+        int numeroFinal = Integer.parseInt(strNum.toString());
+        return numeroFinal;
     }
 }

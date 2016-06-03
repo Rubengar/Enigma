@@ -25,27 +25,13 @@ public class MecanismoMultiplicacionPrimo extends Mecanismo
      */
     @Override
     public int encripta(int numeroEncriptar)
-    {
-        int numero = -1;
-        if (numeroEncriptar > 10)
-        {
-            numero = numeroEncriptar*getNumero();
-        }
-        return numero;
+    {       
+        return numeroEncriptar*getNumero();
     }
 
     @Override
     public int desencripta(int numeroDesencriptar)
     {
-        int numero = -1;
-        if (numeroDesencriptar >= 10)
-        {
-            numero = numeroDesencriptar/getNumero();
-        }
-        if (numero <= 10)
-        {
-            numero = -1;
-        }
-        return numero;
+        return numeroDesencriptar/getNumero();
     }
 }
